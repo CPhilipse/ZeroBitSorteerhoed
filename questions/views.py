@@ -1,3 +1,5 @@
+from itertools import islice
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -25,15 +27,20 @@ def questionslist(request):
 
 def processing_answers(request):
     data = request.POST
-    del data['csrfmiddlewaretoken']
-    print('updated: ', data)
-    len_answers = len(data)
-    for a in range(len_answers):
-        answer = data[f'antwoord{a}']
-        with open('results.txt') as f:
-            f.write(f'{answer}\n')
-        print(a)
-    print('Request: ', data)
 
+    # TODO: Points logic
+
+    # Give the items an index number
+    for element in enumerate(data.items()):
+        # If the first element is the token, skip that element.
+        if element[0] == 0:
+            continue
+
+        # Add remaining elements, which are the answers, to the database (file).
+        question_number = element[1][0]
+        input_answer = element[1][1]
+        formatted_answer = f'Vraag {question_number}:\n\t{input_answer}\n'
+        with open('results.txt', 'a') as f:
+            f.write(formatted_answer)
 
     return HttpResponseRedirect('/resultaten/')

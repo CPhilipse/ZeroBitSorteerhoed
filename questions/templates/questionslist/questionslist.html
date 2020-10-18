@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Vragenlijst</title>
+
+    <style>
+            #container {
+                width: 50%;
+                margin: 20px auto;
+                justify-content: center;
+                display: flex;
+                border: 1px solid #383333;
+                border-radius: 50px; height: 200px;
+                align-items: center;
+            }
+            ul {
+              list-style-type: none;
+            }
+        </style>
 </head>
 <body>
     <h1>Vragenlijst</h1>
-{# TODO: Perhaps add an image as background of the block. #}
     <form action="advies_formuleren/" method="POST">
         {% csrf_token %}
-                          <ul>
-      {% for question in questions %}
-             <div style="  width: 50%;
-  margin: 20px auto;
-                justify-content: center; display: flex; border: 1px solid #383333;
-                border-radius: 50px; height: 200px;
-              ">
-                <div style="
-                    padding-top: 75px;
-                ">
-                    <label for="{{ question }}">{{ question.0 }}</label>
-                    <br>
-                    {# question.1 is the same as question[1] #}
-                    {% for answer in question.1 %}
-                       <li>
-                            {# 'name' specifies name of <input>, if name is the same as other input, #}
-                            {# then these cannot both be chosen #}
-                            <input type="radio" name="{{ question }}" value="eens">{{ answer }}
-                        </li>
-                    {% endfor %}
+        <ul>
+            {% for question in questions %}
+                 <div id="container">
+                    <div style="vertical-align: center">
+                        <label for="{{ question }}">{{ question.0 }}</label>
+                        <br>
+                        {# question.1 is the same as question[1] #}
+                        {% for answer in question.1 %}
+                           <li>
+                                {# 'name' specifies name of <input>, if name is the same as an other input, #}
+                                {# then only on of them can be selected. #}
+                                <input type="radio" name="{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer }}
+                            </li>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-                              </ul>
-<input type="submit" value="OK">
+            {% endfor %}
+        </ul>
+        <input type="submit" value="OK">
     </form>
 </body>
 </html>
