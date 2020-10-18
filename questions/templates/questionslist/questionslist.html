@@ -9,23 +9,31 @@
 {# TODO: Perhaps add an image as background of the block. #}
     <form action="advies_formuleren/" method="POST">
         {% csrf_token %}
-        {% for question in questions %}
-             <div style="
+                          <ul>
+      {% for question in questions %}
+             <div style="  width: 50%;
+  margin: 20px auto;
                 justify-content: center; display: flex; border: 1px solid #383333;
-                border-radius: 50px; width: 700px; height: 200px;
+                border-radius: 50px; height: 200px;
               ">
                 <div style="
                     padding-top: 75px;
                 ">
-                    <label for="antwoord">{{ question.0 }}</label>
+                    <label for="{{ question }}">{{ question.0 }}</label>
                     <br>
+                    {# question.1 is the same as question[1] #}
                     {% for answer in question.1 %}
-                        <input type="radio" id="antwoord" name="antwoord" value="eens">{{ answer }}
+                       <li>
+                            {# 'name' specifies name of <input>, if name is the same as other input, #}
+                            {# then these cannot both be chosen #}
+                            <input type="radio" name="{{ question }}" value="eens">{{ answer }}
+                        </li>
                     {% endfor %}
                 </div>
             </div>
         {% endfor %}
-        <input type="submit" value="OK">
+                              </ul>
+<input type="submit" value="OK">
     </form>
 </body>
 </html>
