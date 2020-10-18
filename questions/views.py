@@ -15,23 +15,36 @@ from questions.forms import QuestionsForm
 def questionslist(request):
     # TODO: perhaps retrieve the questions from a file.
     #      Perhaps put the answer options statically in the html file.
-    questions_list = ['Hoe gaat het?', 'Alles goed?', 'Ben je oké?', 'Alles top?', 'Jij goed?', 'Sup?']
-    answer_options = ['eens', 'oneens']
+    #   If you can really find the time, try to put this in excel and retrieve it from there through maybe Panda's python.
+    # questions_list = ['Hoe gaat het?', 'Alles goed?', 'Ben je oké?', 'Alles top?', 'Jij goed?', 'Sup?']
+    questions_list = [['Vraag 1', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['Vraag 2', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['Vraag 3', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']]]
+    # answers_list = [['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4'], ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']]
 
-    context = {'questions': questions_list, 'answer_options': answer_options}
+    context = {'questions': questions_list}
+    # context = {'questions': questions_list, 'answers': answers_list}
+    # print('HAII', context['questions'])
+    # for a, aa, aaa, aaaa in context['answers']:
+        # print(f'{a, aa, aaa}tt\n')
+        # for answer in object:
+            # for answer in question[1][1]:
+            # for answer in question:
+            #     print(f'\t{answer}')
+            # print(answer)
     return render(request, 'questionslist/questionslist.html', context)
 
 def processing_answers(request):
-    print('Request: ', request)
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = QuestionsForm(request.POST)
-        print('Form data: ', form)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            context = {}
+    data = request.POST
+    del data['csrfmiddlewaretoken']
+    print('updated: ', data)
+    len_answers = len(data)
+    for a in range(len_answers):
+        answer = data[f'antwoord{a}']
+        with open('results.txt') as f:
+            f.write(f'{answer}\n')
+        print(a)
+    print('Request: ', data)
 
-            return HttpResponseRedirect('/thanks/')
+
+    return HttpResponseRedirect('/resultaten/')
