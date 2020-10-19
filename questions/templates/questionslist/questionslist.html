@@ -8,10 +8,9 @@
             #container {
                 width: 50%;
                 margin: 20px auto;
-                justify-content: center;
-                display: flex;
                 border: 1px solid #383333;
                 border-radius: 50px; height: 200px;
+                display: flex;
                 align-items: center;
             }
             ul {
@@ -27,14 +26,16 @@
             {% for question in questions %}
                  <div id="container">
                     <div style="vertical-align: center">
-                        <label for="{{ question }}">{{ question.0 }}</label>
+                        <label style="position: absolute; margin-left: 75px;" for="{{ question }}">
+                            {{ question.1 }}
+                        </label>
                         <br>
                         {# question.1 is the same as question[1] #}
-                        {% for answer in question.1 %}
+                        {% for answer in question.2 %}
                            <li>
                                 {# 'name' specifies name of <input>, if name is the same as an other input, #}
                                 {# then only on of them can be selected. #}
-                                <input type="radio" name="{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer }}
+                                <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer }}
                             </li>
                         {% endfor %}
                     </div>

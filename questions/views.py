@@ -1,9 +1,5 @@
-from itertools import islice
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-
-from questions.forms import QuestionsForm
 
 ''' TODO:
     1. Make multiple inputs on the view.
@@ -18,9 +14,16 @@ def questionslist(request):
     # TODO: perhaps retrieve the questions from a file.
     #      Perhaps put the answer options statically in the html file.
     #   If you can really find the time, try to put this in excel and retrieve it from there through maybe Panda's python.
-    questions_list = [['Vraag 1', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
-                      ['Vraag 2', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
-                      ['Vraag 3', ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']]]
+    questions_list = [['BDaM', 'Ben jij geïnteresseerd in het automatiseren van bepaalde processen?',
+                       ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['BDaM SE', 'Wil jij graag leren hoe je data efficiënt opslaat in een database?',
+                       ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['BDaM', 'Is analyseren van data iets wat jou aanspreekt?',
+                       ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['BDaM FICT', 'Wil jij leren onderzoek te doen naar bepaalde data om jou gestelde bewering te kunnen onderbouwen?',
+                       ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']],
+                      ['BDaM', 'Wil jij doormiddel van opgeslagen data voorspellingen kunnen doen over toekomstige ontwikkelingen? ',
+                       ['antwoord 1', 'antwoord 2', 'antwoord 3', 'antwoord 4']]]
 
     context = {'questions': questions_list}
     return render(request, 'questionslist/questionslist.html', context)
@@ -28,13 +31,26 @@ def questionslist(request):
 def processing_answers(request):
     data = request.POST
 
-    # TODO: Points logic
-
+    BDaM_points = 0
+    FICT_points = 0
+    IaT_points = 0
+    SE_points = 0
     # Give the items an index number
     for element in enumerate(data.items()):
         # If the first element is the token, skip that element.
         if element[0] == 0:
             continue
+
+        # Points logic
+        # TODO: if answer is not acknowledigng the specialisation, then do NOT add +1
+        if 'BDaM' in element[1][0]:
+            BDaM_points += 1
+        if 'FICT' in element[1][0]:
+            FICT_points += 1
+        if 'IaT' in element[1][0]:
+            IaT_points += 1
+        if 'SE' in element[1][0]:
+            SE_points += 1
 
         # Add remaining elements, which are the answers, to the database (file).
         question_number = element[1][0]
@@ -42,5 +58,9 @@ def processing_answers(request):
         formatted_answer = f'Vraag {question_number}:\n\t{input_answer}\n'
         with open('results.txt', 'a') as f:
             f.write(formatted_answer)
+
+    with open('results.txt', 'a') as f:
+        points = f'BDaM punten: {BDaM_points}\nFICT punten: {FICT_points}\nIaT punten: {IaT_points}\nSE punten: {SE_points}'
+        f.write(points)
 
     return HttpResponseRedirect('/resultaten/')
