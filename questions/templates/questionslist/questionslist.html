@@ -5,34 +5,61 @@
     <title>Vragenlijst</title>
 
     <style>
-            #container {
-                width: 50%;
-                margin: 20px auto;
-                border: 1px solid #383333;
-                border-radius: 50px; height: 200px;
-                display: flex;
-                align-items: center;
-            }
-            ul {
-              list-style-type: none;
-            }
-        </style>
+        #container {
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #383333;
+            border-radius: 50px; height: 200px;
+            display: flex;
+            align-items: center;
+            {#box-shadow: 10px 10px 5px -7px rgb(134, 218, 243);#}
+            box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, .75);
+        }
+        ul {
+          list-style-type: none;
+        }
+        #title {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            font-size: 4vw;
+        }
+        .question {
+            position: absolute;
+            margin-left: 75px;
+        }
+        .answer {
+            margin: 0 0 0 100px;
+        }
+        .button_container {
+            display:flex;
+            justify-content: center;
+        }
+        .submit_button {
+            background: #B2FEFA;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            padding: 20px;
+            width: 200px;
+            border-radius: 50px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Vragenlijst</h1>
+    <h1 id="title">Vragenlijst</h1>
     <form action="advies_formuleren/" method="POST">
         {% csrf_token %}
         <ul>
             {% for question in questions %}
                  <div id="container">
                     <div style="vertical-align: center">
-                        <label style="position: absolute; margin-left: 75px;" for="{{ question }}">
+                        <label class="question" for="{{ question }}">
                             {{ question.1 }}
                         </label>
                         <br>
                         {# question.1 is the same as question[1] #}
                         {% for answer in question.2 %}
-                           <li>
+                           <li class="answer">
                                 {# 'name' specifies name of <input>, if name is the same as an other input, #}
                                 {# then only on of them can be selected. #}
                                 <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer }}
@@ -42,7 +69,9 @@
                 </div>
             {% endfor %}
         </ul>
-        <input type="submit" value="OK">
+        <div class="button_container">
+            <input class="submit_button" type="submit" value="Submit">
+        </div>
     </form>
 </body>
 </html>
