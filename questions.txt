@@ -1,0 +1,16 @@
+BDaM ~ Ben jij geinteresseerd in het automatiseren van bepaalde processen?
+Ik ben in mijn vrije tijd bezig met automatiseren.;Wat is automatiseren? Het klinkt niet eens boeiend.;Ik wil graag meer dingen automatiseren.;Ik heb helemaal niks met automatiseren.
+BDaM SE ~ Wil jij graag leren hoe je data efficiënt opslaat in een database?
+Ik weet niet goed hoe ik informatie efficiënt kan opslaan, maar ik ben wel geïntrigeerd in hoe ik dit moet doen.;Ik sla alle relevante informatie die ik tegenkom op in een database.;Ik sla informatie nooit op in een database.;Wat is een database?? Ik wil het niet eens weten.
+BDaM ~ Is analyseren van data iets wat jou aanspreekt?
+Ik ben niet analyserend ingesteld, hier wil ik verandering in brengen.;Analyseren is niet iets wat mij aanspreekt.;Analyseren trekt mij heel erg aan.;Ik weet niet goed wat analyseren is, maar het klinkt ook niet echt interessant.
+BDaM FICT ~ Wil jij leren onderzoek te doen naar bepaalde data om jou gestelde bewering te kunnen onderbouwen?
+Als ik iets niet snap, doe ik onderzoek naar dit onderwerp.;Ik beweer stellingen gebaseerd op voorafgaand onderzoek.;Ik hou niet van onderzoeken.;Ik onderbouw nooit mijn meningen of beweringen.
+BDaM ~ Wil jij doormiddel van opgeslagen data voorspellingen kunnen doen over toekomstige ontwikkelingen?
+Ik heb helemaal niks met wiskunde;Ik hou van wiskunde;Voorspellingen kunnen doen? Cool!;Ik vind de ontwikkelingen van vroeger veel interessanter dan toekomstige ontwikkelingen.
+IoT ~ Ik wil me in mijn toekomstige werk bezig houden met webdesign.
+Zeker niet;Af en toe;Lijkt me leuk;Webdesign vind ik erg interessant
+IoT ~ Wil je app-developer worden?
+IoT ~ Ben je geïnteresseerd in het design van devices?
+IoT ~ Lijkt het je gaaf om VR experiences te ontwerpen?
+IoT ~ Vind je het belangrijk hoe het design van een user interface werkt en wil je hierover nadenken?
