@@ -3,5 +3,6 @@ from questions import views
 
 urlpatterns = [
     path('', views.questionslist),
-    path('advies_formuleren/', views.processing_answers),
+    # path('<str:username>', views.questionslist),
+    path('advies_formuleren/<str:username>/', views.processing_answers),
 ]

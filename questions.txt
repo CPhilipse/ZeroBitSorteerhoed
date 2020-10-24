@@ -11,6 +11,20 @@ Ik heb helemaal niks met wiskunde;Ik hou van wiskunde;Voorspellingen kunnen doen
 IoT ~ Ik wil me in mijn toekomstige werk bezig houden met webdesign.
 Zeker niet;Af en toe;Lijkt me leuk;Webdesign vind ik erg interessant
 IoT ~ Wil je app-developer worden?
+App design lijkt me verschrikkelijk;Ik ben nooit bezig met apps en het interesseert me niet;App design lijkt me opzich leuk;App design is een passie van me
 IoT ~ Ben je geïnteresseerd in het design van devices?
+Software is mijn ding, hoe een device eruit ziet doet er niet toe;Device ontwerp lijkt me niet interessant;Ik vind het cool als een device mooi ontworpen is;Devices designen lijkt me super
 IoT ~ Lijkt het je gaaf om VR experiences te ontwerpen?
+Dit zie ik mezelf nooit doen later;Misschien een keertje, maar in principe niet;VR biedt enorme mogelijkheden die me interesseren;Ja, en ik heb zelfs al ideeën voor wat cool zou zijn op VR!
 IoT ~ Vind je het belangrijk hoe het design van een user interface werkt en wil je hierover nadenken?
+Nee, het maakt me niet veel uit;Als gebruiker is het fijn, maar ik denk er nooit over na;Ja – een goede UI maakt alle verschil!;Ik heb een passie voor design, en wil dit helpen verbeteren in de technologieën van de toekomst
+SE ~ Ben je een creatieveling?
+Ja, Ik hou van systemen ontwerpen;Ja, ik kom snel met goede ideeën;Nee, ik ben niet zo goed in unieke ideeën bedenken;Ik weet er niet zo’n goed antwoord op
+SE ~ Hou je van programmeren?
+Ja, ik ben er in mijn vrije tijd erg veel mee bezig;Ja, en ik ben er erg goed in;Ik vind het een beetje saai;Nee, en ik vind het ook erg moeilijk
+SE ~ Ben je wiskundig aangelegd?
+Ja, ik haalde altijd goede cijfers voor wiskunde op school;Ik hou van wiskundige opdrachten, maar ik vind het wel moeilijk;Nee, ik haalde altijd slechte cijfers voor wiskunde op school;Ik vind het niet zo moeilijk, maar ik ben niet echt geïnteresseerd in wiskunde
+SE ~ Ben je analytisch sterk?
+Ik ben goed in het identificeren van de kernelementen binnen een software;Ja, ik ben goed in het benchmarken van functionaliteit/verzamelen en valideren van functionele eisen voor een opdracht voor een software systeem;Ik weet het niet, ik heb mezelf er nooit echt op getest;Nee, ik vind het moeilijk om software systematisch te ontleden in zijn elementen
+SE ~ Kan je snel oplossingen voor ingewikkelde problemen bedenken?
+Ja, ik ben goed in het zoeken van de oorzaak van het probleem en weet er snel een antwoord op;Nog niet, maar de laatste tijd werk ik veel met onder andere Python waardoor ik er beter in wordt;Nee, vaak weet ik niet wat de oorzaak van het probleem is;Vaak kan ik wel de oorzaak aanduiden, maar kan ik er geen oplossing voor vinden

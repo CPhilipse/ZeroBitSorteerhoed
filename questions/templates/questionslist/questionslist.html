@@ -47,7 +47,7 @@
 </head>
 <body>
     <h1 id="title">Vragenlijst</h1>
-    <form action="advies_formuleren/" method="POST">
+    <form action="advies_formuleren/{{ username }}/" method="POST">
         {% csrf_token %}
         <ul>
             {% for question in questions %}

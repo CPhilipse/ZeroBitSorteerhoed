@@ -1,3 +1,4 @@
+import uuid
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -7,6 +8,7 @@ from django.shortcuts import render
             i. The results being: Points per specialisation and specialisation with the most points.
 '''
 
+# def questionslist(request, username):
 def questionslist(request):
     # I think in PythonAnywhere you need the path /home/project/questions.txt or something like that.
     questions_list = []
@@ -16,18 +18,30 @@ def questionslist(request):
         splitted_lines = data.split('\n')
         for index, element in enumerate(splitted_lines):
             if index % 2 == 0:
+                # Text before ~ is the id of the question.
                 questions = element.split('~')
                 questions_list.append(questions)
             if index % 2 != 0:
+                # The ; is to separate the answers in the file
                 answers = element.split(';')
                 questions_list[question_list_number].append(answers)
                 question_list_number += 1
 
-    context = {'questions': questions_list}
+    # Remove empty question from list.
+    questions_list.remove([''])
+
+    test_username = 'test_usernameHAI'
+    context = {'questions': questions_list, 'username': test_username}
     return render(request, 'questionslist/questionslist.html', context)
 
-def processing_answers(request):
+# If user hasn't entered an username, create an unique username
+no_username_backup_id = uuid.uuid4()
+def processing_answers(request, username=no_username_backup_id):
     data = request.POST
+
+    # Create file for each new user. Does user already have a record? Update his record.
+    with open(f'results/results{username}.txt', 'w') as f:
+        pass
 
     BDaM_points = 0
     FICT_points = 0
@@ -55,11 +69,16 @@ def processing_answers(request):
         question_number = element[1][0]
         input_answer = element[1][1]
         formatted_answer = f'Vraag {question_number}:\n\t{input_answer}\n'
-        with open('results.txt', 'a') as f:
+        with open(f'results/results{username}.txt', 'a') as f:
             f.write(formatted_answer)
 
-    with open('results.txt', 'a') as f:
+    with open(f'results/results{username}.txt', 'a') as f:
         points = f'BDaM punten: {BDaM_points}\nFICT punten: {FICT_points}\nIaT punten: {IaT_points}\nSE punten: {SE_points}\n'
         f.write(points)
 
-    return HttpResponseRedirect('/resultaten/')
+    # In the results.urls (page Bart needs to make) add:
+    # path('/resultaten/<str:username>/', views.show_results),
+    # This way Bart can grab the username by doing def function(request, username):
+    # grab the file by doing with open(f'results{username}') as f:
+    # And then Bart should show the results.
+    return HttpResponseRedirect(f'/resultaten/{username}/')
