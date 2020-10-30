@@ -1,10 +1,1 @@
-Vraag BDaM 1:
-	Ik ben in mijn vrije tijd bezig met automatiseren.1
-Vraag BDaM SE 2:
-	Ik sla alle relevante informatie die ik tegenkom op in een database.1
-Vraag BDaM 3:
-	Ik ben niet analyserend ingesteld, hier wil ik verandering in brengen.1
-BDaM punten: 3
-FICT punten: 0
-IaT punten: 0
-SE punten: 1
+5:7:2:0

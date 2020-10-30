@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from questions import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('vragenlijst/', include('questions.urls'))
+    path('vragenlijst/', include('questions.urls')),
+    path('resultaten/<str:username>/', views.show_results),
 ]

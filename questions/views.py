@@ -26,7 +26,7 @@ def questionslist(request):
 
     test_username = 'test_usernameHAI'
     context = {'questions': questions_list, 'username': test_username}
-    return render(request, 'questionslist/questionslist.html', context)
+    return render(request, 'questionslist/index.html', context)
 
 # If user hasn't entered an username, create an unique username
 no_username_backup_id = uuid.uuid4()
@@ -65,15 +65,53 @@ def processing_answers(request, username=no_username_backup_id):
             if answer_id == '1':
                 SE_points += 1
 
-        # Add remaining elements, which are the answers, to the database (file).
-        question_number = element[1][0]
-        input_answer = element[1][1]
-        formatted_answer = f'Vraag {question_number}:\n\t{input_answer}\n'
-        with open(f'results/results{username}.txt', 'a') as f:
-            f.write(formatted_answer)
+        ## Add remaining elements, which are the answers, to the database (file).
+        # question_number = element[1][0]
+        # input_answer = element[1][1]
+        # formatted_answer = f'Vraag {question_number}:\n\t{input_answer}\n'
+        # with open(f'results/results{username}.txt', 'a') as f:
+        #     f.write(formatted_answer)
 
     with open(f'results/results{username}.txt', 'a') as f:
-        points = f'BDaM punten: {BDaM_points}\nFICT punten: {FICT_points}\nIaT punten: {IaT_points}\nSE punten: {SE_points}\n'
+        points = f'{BDaM_points}:{FICT_points}:{IaT_points}:{SE_points}'
+        # points = f'BDaM punten: {BDaM_points}\nFICT punten: {FICT_points}\nIaT punten: {IaT_points}\nSE punten: {SE_points}\n'
         f.write(points)
 
     return HttpResponseRedirect(f'/resultaten/{username}/')
+
+
+def show_results(request, username):
+    data = request.POST
+    output = 0
+    f = open(f'results/results{username}.txt', 'r')
+
+    for i in f:
+        bdam = 0
+        fict = 0
+        iat = 0
+        se = 0
+        fields = i.split(":")
+        bdam = fields[0]
+        fict = fields[1]
+        iat = fields[2]
+        se = fields[3]
+
+        list = {"bdam": fields[0], "fict": fields[1], "iat": fields[2], "se": fields[3]}
+        joe = max(list, key=list.get)
+        print(str(joe))
+
+        output = max(list)
+        print(f"dit is de MAX LIST OUTPUT:{max(list)}")
+
+        uitslag = [
+            {
+                'uitkomst': joe
+            }
+        ]
+
+    f.close()
+
+    context = {
+        'uitslag': uitslag
+    }
+    return render(request, 'results/index.html', context)

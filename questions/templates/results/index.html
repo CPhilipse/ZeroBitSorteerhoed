@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vragenlijst</title>
+
+    <style>
+        #container {
+            width: 50%;
+            margin: 20px auto;
+            border: 1px solid #383333;
+            border-radius: 50px; height: 200px;
+            display: flex;
+            align-items: center;
+            box-shadow: 10px 10px 5px -7px rgba(0, 0, 0, .75);
+        }
+        ul {
+          list-style-type: none;
+        }
+        #title {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            font-size: 4vw;
+        }
+        .question {
+            position: absolute;
+            margin-left: 75px;
+        }
+        .answer {
+            margin: 0 0 0 100px;
+        }
+        .button_container {
+            display:flex;
+            justify-content: center;
+        }
+        .submit_button {
+            background: #B2FEFA;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            padding: 20px;
+            width: 200px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Resultaten</h1>
+
+    {% for t in uitslag %}
+        <h3>Wij hebben je gematched met de richting: {{ t.uitkomst }}</h3>
+        {% if 'se' in t.uitkomst %}
+            <p>DE RICHTING <b>SOFTWARE ENGINEERING</b> IS OP BASIS VAN JOUW ANTWOORDEN TOEGEWEZEN ALS BESTE KEUZE</p>
+        {% endif %}
+
+        {% if 'bdam' in t.uitkomst %}
+            <p>DE RICHTING <b>BUSINESS DATA MANAGEMENT</b> IS OP BASIS VAN JOUW ANTWOORDEN TOEGEWEZEN ALS BESTE KEUZE</p>
+        {% endif %}
+
+        {% if 'fict' in t.uitkomst %}
+            <p>DE RICHTING <b>FORENSISCH ICT</b> IS OP BASIS VAN JOUW ANTWOORDEN TOEGEWEZEN ALS BESTE KEUZE</p>
+        {% endif %}
+
+        {% if 'iat' in t.uitkomst %}
+            <p>DE RICHTING <b>INTERACTIE-TECHNOLOGIE</b> IS OP BASIS VAN JOUW ANTWOORDEN TOEGEWEZEN ALS BESTE KEUZE</p>
+        {% endif %}
+    {% endfor %}
+
+
+
+
+</body>
+</html>

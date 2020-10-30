@@ -24,8 +24,6 @@
             font-size: 4vw;
         }
         .question {
-            width: 50%;
-            position: absolute;
             margin-left: 75px;
         }
         .answer {
@@ -52,7 +50,7 @@
         <ul>
             {% for question in questions %}
                  <div id="container">
-                    <div style="vertical-align: center">
+                    <div style="vertical-align: center; width: 90%">
                         <label class="question" for="{{ question }}">
                             {{ question.1 }}
                         </label>
