@@ -2,12 +2,6 @@ import uuid
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-''' TODO:
-    3. From this function return a view that goes to the results page
-        a. Pass the results as a variable (context variable) to the results page
-            i. The results being: Points per specialisation and specialisation with the most points.
-'''
-
 # def questionslist(request, username):
 def questionslist(request):
     # I think in PythonAnywhere you need the path /home/project/questions.txt or something like that.
