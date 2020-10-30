@@ -53,17 +53,23 @@ def processing_answers(request, username=no_username_backup_id):
         if element[0] == 0:
             continue
 
-        # Points logic
-        # TODO: if answer is not acknowledigng the specialisation, then do NOT add +1.
-        #   You can only do this if you have the answers ~_~
+        ''' Points logic '''
+        # After each answer that should give points there is an 1 added in the questions file.
+        # With this manner we can recognize the answer that should give a point.
+        # If answer_id is equal to 1, then add points else just don't
+        answer_id = element[1][0][-1]
         if 'BDaM' in element[1][0]:
-            BDaM_points += 1
+            if answer_id == '1':
+                BDaM_points += 1
         if 'FICT' in element[1][0]:
-            FICT_points += 1
+            if answer_id == '1':
+                FICT_points += 1
         if 'IaT' in element[1][0]:
-            IaT_points += 1
+            if answer_id == '1':
+                IaT_points += 1
         if 'SE' in element[1][0]:
-            SE_points += 1
+            if answer_id == '1':
+                SE_points += 1
 
         # Add remaining elements, which are the answers, to the database (file).
         question_number = element[1][0]
@@ -76,9 +82,4 @@ def processing_answers(request, username=no_username_backup_id):
         points = f'BDaM punten: {BDaM_points}\nFICT punten: {FICT_points}\nIaT punten: {IaT_points}\nSE punten: {SE_points}\n'
         f.write(points)
 
-    # In the results.urls (page Bart needs to make) add:
-    # path('/resultaten/<str:username>/', views.show_results),
-    # This way Bart can grab the username by doing def function(request, username):
-    # grab the file by doing with open(f'results{username}') as f:
-    # And then Bart should show the results.
     return HttpResponseRedirect(f'/resultaten/{username}/')
