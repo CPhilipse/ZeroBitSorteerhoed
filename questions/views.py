@@ -57,7 +57,7 @@ def processing_answers(request, username=no_username_backup_id):
         # After each answer that should give points there is an 1 added in the questions file.
         # With this manner we can recognize the answer that should give a point.
         # If answer_id is equal to 1, then add points else just don't
-        answer_id = element[1][0][-1]
+        answer_id = element[1][1][-1]
         if 'BDaM' in element[1][0]:
             if answer_id == '1':
                 BDaM_points += 1

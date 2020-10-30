@@ -61,8 +61,8 @@
                         {% for answer in question.2 %}
                            <li class="answer">
                                 {# 'name' specifies name of <input>, if name is the same as an other input, #}
-                                {# then only on of them can be selected. #}
-                                <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer }}
+                                {# then only on of them can be selected. The slice is to hide answer_id. Very creative, isn't it? #}
+                                <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer|slice:":-1" }}
                             </li>
                         {% endfor %}
                     </div>
