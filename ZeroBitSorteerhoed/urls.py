@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('vragenlijst/', include('questions.urls')),
     path('resultaten/<str:username>/', views.show_results),
+    path('specialisaties/', views.specialisations),
 ]

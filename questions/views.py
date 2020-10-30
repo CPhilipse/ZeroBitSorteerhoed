@@ -107,3 +107,6 @@ def show_results(request, username):
         'uitslag': uitslag
     }
     return render(request, 'results/index.html', context)
+
+def specialisations(request):
+    return render(request, 'specialisations/dashboard.html')
