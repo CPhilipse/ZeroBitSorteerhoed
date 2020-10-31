@@ -24,8 +24,8 @@ def questionslist(request):
     # Remove empty question from list.
     questions_list.remove([''])
 
-    test_username = 'test_usernameHAI'
-    context = {'questions': questions_list, 'username': test_username}
+    random_username = uuid.uuid4()
+    context = {'questions': questions_list, 'username': random_username}
     return render(request, 'questionslist/index.html', context)
 
 # If user hasn't entered an username, create an unique username
@@ -110,3 +110,9 @@ def show_results(request, username):
 
 def specialisations(request):
     return render(request, 'specialisations/dashboard.html')
+
+def quizinfo(request):
+    return render(request, 'quizinfo/quizinfo.html')
+
+def home(request):
+    return render(request, 'home/homepage.html')

@@ -20,7 +20,9 @@ from questions import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home),
     path('vragenlijst/', include('questions.urls')),
     path('resultaten/<str:username>/', views.show_results),
     path('specialisaties/', views.specialisations),
+    path('quizinfo/', views.quizinfo),
 ]

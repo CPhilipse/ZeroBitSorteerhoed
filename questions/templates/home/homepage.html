@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.button {
+  display: block;
+  background-color: #2180BF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 12px 28px;
+  width: 172px;
+}
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  width: 1262px;
+  height: 120px;
+  background-color: #2180BF;
+  text-align: left;
+  font-size: 30px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 0.5;
+  -ms-flex: 0.5;
+  flex: 0.5;
+  width: 10px;
+  height: 450px;
+  background: #ccc;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  width: 80%;
+  height: 450px;
+  background-color: #f1f1f1;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Sorteerhoed</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a class="button" href="/specialisaties/">Specialisaties</a></li>
+      <li><a class="button" href="/quizinfo/">Info quiz</a></li>
+      <li><a class="button" href="/vragenlijst/">Naar de quiz</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h1> Welkom</h1>
+    <p> Wij hebben als groep een soort sorteerhoed gemaakt. Dit werkt doormiddel van een quiz en die bepaalt welke specialisatie het best bij u past.</p>
+    <p> Links kunt u navigeren om meer te weten te komen over de specialisaties, info over de quiz en waar u de quiz kunt maken.</p>
+  </article>
+</section>
+
+
+</body>
+</html>
