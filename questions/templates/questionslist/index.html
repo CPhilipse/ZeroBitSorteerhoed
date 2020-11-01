@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Vragenlijst</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
         #container {
             width: 50%;
@@ -16,12 +17,6 @@
         }
         ul {
           list-style-type: none;
-        }
-        #title {
-            display: flex;
-            justify-content: center;
-            padding: 50px;
-            font-size: 4vw;
         }
         .question {
             margin-left: 75px;
@@ -44,7 +39,20 @@
     </style>
 </head>
 <body>
-    <h1 id="title">Vragenlijst</h1>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link disabled">Vragenlijst</a>
+                </li>
+            </ul>
+        </div>
+	</nav>
+
     <form action="advies_formuleren/{{ username }}/" method="POST">
         {% csrf_token %}
         <ul>
@@ -60,7 +68,7 @@
                            <li class="answer">
                                 {# 'name' specifies name of <input>, if name is the same as an other input, #}
                                 {# then only on of them can be selected. The slice is to hide answer_id. Very creative, isn't it? #}
-                                <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}">{{ answer|slice:":-1" }}
+                                <input type="radio" name="{{ question.0 }}{{ forloop.parentloop.counter }}" value="{{ answer }}"> {{ answer|slice:":-1" }}
                             </li>
                         {% endfor %}
                     </div>
